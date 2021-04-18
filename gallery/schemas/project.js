@@ -1,11 +1,11 @@
 export default {
-    name: "project", 
+    name: "project",
     title: "Project",
     type: "document",
     fields: [
         {
             name: "title",
-            title: "string",
+            type: "string",
         },
         {
             name: "date",
@@ -13,27 +13,39 @@ export default {
         },
         {
             name: "place",
-            type: "string",
+            type: "string"
         },
         {
             name: "description",
             type: "text",
         },
         {
-            name: "projectType",
-            title: "Project type",
+            name: "porjectType",
+            tittle: "Project type",
             type: "string",
             options: {
                 list: [
                     { value: "personal", title: "Personal"},
+                    { value: "client", title: "Client"},
                     { value: "school", title: "School"},
-                ]
+                ],
             },
         },
         {
             name: "link",
-            type: "url",
+            type: "url", 
         },
-       
+        {
+            name: "tags",
+            type: "array",
+            of: [
+                {
+                    type: "string",
+                },
+            ],
+            options: {
+                layout: "tags",
+            },
+        },
     ],
 };
