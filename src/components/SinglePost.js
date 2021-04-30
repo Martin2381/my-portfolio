@@ -2,6 +2,7 @@ import React, { useEffect , useState }from "react";
 import { useParams } from "react-router-dom";
 import sanityClient from "../client.js";
 import imageUrlBuilder from "@sanity/image-url";
+import BlockContent from "@sanity/block-content-to-react";
 
 const builder = imageUrlBuilder(sanityClient);
 function urlFor(source) {
@@ -10,7 +11,7 @@ function urlFor(source) {
 
 export default function SinglePost() {
     const [singlePost, setSinglePost] = useState(null);
-    const { slug } = useParam();
+    const { slug } = useParams();
 
     useEffect(() => {
         sanityClient.fetch(`*[slug.current == "${slug}"]{
@@ -60,8 +61,11 @@ export default function SinglePost() {
                     />
                 </header>
                 <div className="px-16 lg:px-48 py-12 lg:py-20 prose lg:prose-xl max-w-full">
-                    BLOCK CONTENT
-                    </div>
+                 <BlockContent blocks={singlePost.body} 
+                 projectId="graf4w11"
+                 dataset="production"
+                 />
+                </div>
             </article>
         </main>
     );
