@@ -2,6 +2,7 @@
   "root": true,
   "project": {
     "name": "gallery"
+    
   },
   "api": {
     "projectId": "graf4w11",
